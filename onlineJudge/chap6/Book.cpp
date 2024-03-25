@@ -1,8 +1,8 @@
 /*定义一个Book类，在该类定义中包括以下数据成员和成员函数。
 数据成员:bookname（书名）、price （价格）和 number（存书数最）。
-成员函数:display 函数显示图书的情况；borrow函数将存书数量减 1，并显示当前存书数量:restore函数将存书数量加1，并显示当时存书数量。
-在main 函数中，要求创建某一种图书对象，并对该图书进行简单的显示、借阅和归还管理。
-输入
+成员函数:display 函数显示图书的情况；borrow函数将存书数量减
+1，并显示当前存书数量:restore函数将存书数量加1，并显示当时存书数量。 在main
+函数中，要求创建某一种图书对象，并对该图书进行简单的显示、借阅和归还管理。 输入
 借阅和归还标志:b 、r，是否继续:y， n
 输出
 
@@ -51,9 +51,12 @@ private:
         number++;
         std::cout << number << std::endl;
     }
+
 public:
     void display() {
-        std::cout << bookName << std::endl << price << std::endl << number << std::endl;
+        std::cout << bookName << std::endl
+                  << price << std::endl
+                  << number << std::endl;
     }
     void getCommand() {
         std::cout << "b/r:" << std::endl;
@@ -67,7 +70,8 @@ public:
                 restore();
                 break;
             default:
-                std::cout << "b/r:" << std::endl;;
+                std::cout << "b/r:" << std::endl;
+                ;
                 std::cin >> command;
         }
     }

@@ -24,11 +24,6 @@ class Integer {
 public:
     Integer(int i) : i(i) {}
     operator int() const { return i; }
-    operator double() const { return i; }
-    Integer operator+(const Integer& rhs) const { return i + rhs.i; }
-    Integer operator-(const Integer& rhs) const { return i - rhs.i; }
-    Integer operator*(const Integer& rhs) const { return i * rhs.i; }
-    Integer operator/(const Integer& rhs) const { return i / rhs.i; }
 
 protected:
     int i;
@@ -36,12 +31,7 @@ protected:
 class Real {
 public:
     Real(double r) : r(r) {}
-    operator int() const { return r; }
     operator double() const { return r; }
-    Real operator+(const Real& rhs) const { return r + rhs.r; }
-    Real operator-(const Real& rhs) const { return r - rhs.r; }
-    Real operator*(const Real& rhs) const { return r * rhs.r; }
-    Real operator/(const Real& rhs) const { return r / rhs.r; }
 
 protected:
     double r;

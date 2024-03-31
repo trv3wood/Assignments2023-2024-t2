@@ -19,7 +19,7 @@ class RMB {
 private:
     int yuan, jiao, fen;
     bool mark = true;
-     void normalize() {
+    void normalize() {
         jiao += fen / 10;
         fen = fen % 10;
         yuan += jiao / 10;

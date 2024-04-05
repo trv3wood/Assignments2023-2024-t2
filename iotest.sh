@@ -15,7 +15,7 @@ cpp_file="$1"
 test_file="$2"  
 expected_output_file="$3"  
   
-# ­ensure that the files exist
+# Â­ensure that the files exist
 if [ ! -f "$cpp_file" ]; then  
     echo "Error: Cpp file '$cpp_file' does not exist."  
     exit 1  

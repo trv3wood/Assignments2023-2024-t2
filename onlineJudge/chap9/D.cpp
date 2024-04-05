@@ -73,7 +73,7 @@ public:
     void show_area() override { std::cout << "Area: " << m_area << std::endl; }
 };
 class Rectangular : public Rectangle {
-protected:
+private:
     float height;
     float m_volume;
 

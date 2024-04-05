@@ -1,0 +1,8 @@
+Please enter the height and base of the triangle:
+Area of Triangle is4
+Please enter the side length of the square:
+Area of Square is27.04
+Please enter the side length of the cube:
+Superficial area of Cube is10.648
+Please enter the radius of the ball:
+Superficial area of Ball is65.4167

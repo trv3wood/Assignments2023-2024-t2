@@ -36,23 +36,23 @@ public:
     static double getAvgCh() { return totalChinese / totalMembers; }
     static double getAvgMath() { return totalMath / totalMembers; }
     static double getAvgEn() { return totalEnglish / totalMembers; }
-        int getChinese() { return chinese; }
-        int getMath() { return math; }
-        int getEnglish() { return english; }
-        virtual int get_total() const = 0;
-        friend ostream &operator<<(ostream &output, const Student &student) {
-            output << student.ID << '\t' << student.name << '\t' << student.gender
-                << '\t' << student.english << '\t' << student.math << '\t'
-                << student.chinese << '\t' << student.get_total();
-            return output;
-        }
+    int getChinese() { return chinese; }
+    int getMath() { return math; }
+    int getEnglish() { return english; }
+    virtual int get_total() const = 0;
+    friend ostream &operator<<(ostream &output, const Student &student) {
+        output << student.ID << '\t' << student.name << '\t' << student.gender
+               << '\t' << student.english << '\t' << student.math << '\t'
+               << student.chinese << '\t' << student.get_total();
+        return output;
+    }
 
-    protected:
-        long ID;
-        char name[20];
-        char gender;
-        int english;
-        int math;
+protected:
+    long ID;
+    char name[20];
+    char gender;
+    int english;
+    int math;
     int chinese;
 };
 double Student::totalChinese = 0;
@@ -60,16 +60,15 @@ double Student::totalMath = 0;
 double Student::totalEnglish = 0;
 int Student::totalMembers = 0;
 
-
-class LiberalArtStudent : public Student {
+class LiberalArtsStudent : public Student {
 public:
-    LiberalArtStudent(long n, const char *p, char s, int e, int m, int c, int h,
-                      int g, int politics_);
-    LiberalArtStudent() {}
+    LiberalArtsStudent(long n, const char *p, char s, int e, int m, int c,
+                       int h, int g, int politics_);
+    LiberalArtsStudent() {}
     friend std::istream &operator>>(std::istream &input,
-                                    LiberalArtStudent &student);
+                                    LiberalArtsStudent &student);
     friend std::ostream &operator<<(std::ostream &output,
-                                    const LiberalArtStudent &student);
+                                    const LiberalArtsStudent &student);
     static void get_average() {
         std::cout << "The average of History:" << averageHistory()
                   << "\tGeography" << averageGeography() << "\tPolitics"
@@ -90,10 +89,10 @@ protected:
     static double averageGeography() { return totalGeography / totalMembers; }
     static double averagePolitics() { return totalPolitics / totalMembers; }
 };
-double LiberalArtStudent::totalHistory = 0;
-double LiberalArtStudent::totalGeography = 0;
-double LiberalArtStudent::totalPolitics = 0;
-int LiberalArtStudent::totalMembers = 0;
+double LiberalArtsStudent::totalHistory = 0;
+double LiberalArtsStudent::totalGeography = 0;
+double LiberalArtsStudent::totalPolitics = 0;
+int LiberalArtsStudent::totalMembers = 0;
 
 class ScienceStudent : public Student {
 public:
@@ -144,17 +143,18 @@ Student::Student(long n, const char *p, char s, int e, int m, int c)
     Student::totalEnglish += english;
 }
 
-LiberalArtStudent::LiberalArtStudent(long n, const char *p, char s, int e,
-                                     int m, int c, int h, int g, int politics_)
+LiberalArtsStudent::LiberalArtsStudent(long n, const char *p, char s, int e,
+                                       int m, int c, int h, int g,
+                                       int politics_)
     : Student(n, p, s, e, m, c), history(h), geography(g), politics(politics_) {
-    LiberalArtStudent::totalHistory += history;
-    LiberalArtStudent::totalGeography += geography;
-    LiberalArtStudent::totalPolitics += politics;
-    LiberalArtStudent::totalMembers++;
+    LiberalArtsStudent::totalHistory += history;
+    LiberalArtsStudent::totalGeography += geography;
+    LiberalArtsStudent::totalPolitics += politics;
+    LiberalArtsStudent::totalMembers++;
     individualTotal = english + math + chinese + history + geography + politics;
 }
 
-std::istream &operator>>(std::istream &input, LiberalArtStudent &student) {
+std::istream &operator>>(std::istream &input, LiberalArtsStudent &student) {
     input >> student.ID >> student.name >> student.gender >> student.english >>
         student.chinese >> student.math >> student.history >>
         student.geography >> student.politics;
@@ -167,15 +167,15 @@ std::istream &operator>>(std::istream &input, LiberalArtStudent &student) {
     Student::totalMath += student.math;
     Student::totalEnglish += student.english;
 
-    LiberalArtStudent::totalMembers++;
-    LiberalArtStudent::totalHistory += student.history;
-    LiberalArtStudent::totalGeography += student.geography;
-    LiberalArtStudent::totalPolitics += student.politics;
+    LiberalArtsStudent::totalMembers++;
+    LiberalArtsStudent::totalHistory += student.history;
+    LiberalArtsStudent::totalGeography += student.geography;
+    LiberalArtsStudent::totalPolitics += student.politics;
     return input;
 }
 
 std::ostream &operator<<(std::ostream &output,
-                         const LiberalArtStudent &student) {
+                         const LiberalArtsStudent &student) {
     output << student.ID << '\t' << student.name << '\t' << student.gender
            << '\t' << student.english << '\t' << student.math << '\t'
            << student.chinese << '\t' << student.history << '\t'
@@ -251,14 +251,14 @@ void BubbleSort(Student **st, int n)
 
                 if (st[j]->get_total() == st[j + 1]->get_total())
 
-                    if (st[j]->getChinese() < st[j + 1]->getChinese())
+                if (st[j]->getChinese() < st[j + 1]->getChinese())
 
-                    {
-                        swap(st[j], st[j + 1]);
+                {
+                    swap(st[j], st[j + 1]);
 
-                        work = 1;
+                    work = 1;
 
-                    }
+                }
 
                 else
 
@@ -297,7 +297,7 @@ int main()
 
     ScienceStudent stu_ss[5];
 
-    LiberalArtStudent stu_las[5];
+    LiberalArtsStudent stu_las[5];
 
     int i;
 
@@ -358,7 +358,7 @@ int main()
 
     ScienceStudent::get_average();
 
-    LiberalArtStudent::get_average();
+    LiberalArtsStudent::get_average();
 
     return 0;
 }

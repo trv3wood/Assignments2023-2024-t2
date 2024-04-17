@@ -1,6 +1,7 @@
 #include <cstring>
 #include <iostream>
 #include <ostream>
+#include <utility>
 
 using namespace std;
 
@@ -19,8 +20,8 @@ public:
     T getMath() { return math; }
     T getEnglish() { return english; }
     virtual T get_total() const { return english + math + chinese; }
-    virtual ostream &getOstream(ostream &out) const;
-    virtual istream &getIstream(istream &in);
+    ostream &getOstream(ostream &out) const;
+    istream &getIstream(istream &in);
     template <class>
     friend ostream &operator<<(ostream &out, const Student<T> &stu);
 
@@ -50,7 +51,9 @@ ostream &Student<T>::getOstream(ostream &out) const {
 
 template <class T>
 ostream &operator<<(ostream &out, const Student<T> &stu) {
-    return stu.getOstream(out);
+    stu.getOstream(out);
+    out << '\t' << stu.get_total();
+    return out;
 }
 
 template <class T>
@@ -81,8 +84,8 @@ public:
     template <class>
     friend istream &operator>>(istream &in, ScienceStudent<T> &stu);
     static void get_average();
-    ostream &getOstream(ostream &out) const override;
-    istream &getIstream(istream &in) override;
+    ostream &getOstream(ostream &out) const;
+    istream &getIstream(istream &in);
 
 private:
     T physics;
@@ -152,8 +155,8 @@ public:
     template <class>
     friend istream &operator>>(istream &in, LiberalArtsStudent<T> &stu);
     static void get_average();
-    ostream &getOstream(ostream &out) const override;
-    istream &getIstream(istream &in) override;
+    ostream &getOstream(ostream &out) const;
+    istream &getIstream(istream &in);
 
 private:
     T history;
@@ -217,10 +220,13 @@ template <class T>
 void ToSort(T *stu[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i; j < n; j++) {
+
             if (stu[i]->get_total() < stu[j]->get_total()) {
-                T *temp = stu[i];
-                stu[i] = stu[j];
-                stu[j] = temp;
+
+                std::swap(stu[i], stu[j]);
+                //T *temp = stu[i];
+                //stu[i] = stu[j];
+                //stu[j] = temp;
             }
         }
     }

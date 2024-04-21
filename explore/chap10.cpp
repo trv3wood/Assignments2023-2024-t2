@@ -4,8 +4,9 @@
 #include <utility>
 
 using namespace std;
+#define tp template <class T>
 
-template <class T>
+tp
 class Student {
 public:
     Student() {}
@@ -33,30 +34,30 @@ protected:
     T math;
     T chinese;
 };
-template <class T>
+tp
 T Student<T>::totalMath = 0;
-template <class T>
+tp
 T Student<T>::totalChinese = 0;
-template <class T>
+tp
 T Student<T>::totalEnglish = 0;
-template <class T>
+tp
 T Student<T>::totalMembers = 0;
 
-template <class T>
+tp
 ostream &Student<T>::getOstream(ostream &out) const {
     out << ID << '\t' << name << '\t' << gender << '\t' << english << '\t'
         << math << '\t' << chinese;
     return out;
 }
 
-template <class T>
+tp
 ostream &operator<<(ostream &out, const Student<T> &stu) {
     stu.getOstream(out);
     out << '\t' << stu.get_total();
     return out;
 }
 
-template <class T>
+tp
 istream &Student<T>::getIstream(istream &in) {
     in >> ID >> name >> gender >> english >> chinese >> math;
     Student<T>::totalMembers++;
@@ -66,12 +67,12 @@ istream &Student<T>::getIstream(istream &in) {
     return in;
 }
 
-template <class T>
+tp
 istream &operator>>(istream &in, Student<T> &stu) {
     return stu.getIstream(in);
 }
 
-template <class T>
+tp
 class ScienceStudent : public Student<T> {
 public:
     ScienceStudent() {}
@@ -97,23 +98,23 @@ private:
     static int totalMembers;
 };
 
-template <class T>
+tp
 T ScienceStudent<T>::totalPhysics = 0;
-template <class T>
+tp
 T ScienceStudent<T>::totalChemistry = 0;
-template <class T>
+tp
 T ScienceStudent<T>::totalBiology = 0;
 template <>
 int ScienceStudent<int>::totalMembers = 0;
 
-template <class T>
+tp
 void ScienceStudent<T>::get_average() {
     cout << "The average of Physics: " << totalPhysics / totalMembers << '\t'
          << "Chemistry: " << totalChemistry / totalMembers << '\t'
          << "Biology: " << totalBiology / totalMembers << endl;
 }
 
-template <class T>
+tp
 ostream &ScienceStudent<T>::getOstream(ostream &out) const {
     Student<T>::getOstream(out);
     out << '\t' << physics << '\t' << chemistry << '\t' << biology << '\t'
@@ -121,12 +122,12 @@ ostream &ScienceStudent<T>::getOstream(ostream &out) const {
     return out;
 }
 
-template <class T>
+tp
 ostream &operator<<(ostream &out, const ScienceStudent<T> &stu) {
     return stu.getOstream(out);
 }
 
-template <class T>
+tp
 istream &ScienceStudent<T>::getIstream(istream &in) {
     Student<T>::getIstream(in);
     in >> physics >> chemistry >> biology;
@@ -137,12 +138,12 @@ istream &ScienceStudent<T>::getIstream(istream &in) {
     return in;
 }
 
-template <class T>
+tp
 istream &operator>>(istream &in, ScienceStudent<T> &stu) {
     return stu.getIstream(in);
 }
 
-template <class T>
+tp
 class LiberalArtsStudent : public Student<T> {
 public:
     LiberalArtsStudent() {}
@@ -168,16 +169,16 @@ private:
     static int totalMembers;
 };
 
-template <class T>
+tp
 T LiberalArtsStudent<T>::totalHistory = 0;
-template <class T>
+tp
 T LiberalArtsStudent<T>::totalGeography = 0;
-template <class T>
+tp
 T LiberalArtsStudent<T>::totalPolitics = 0;
-template <class T>
+tp
 int LiberalArtsStudent<T>::totalMembers = 0;
 
-template <class T>
+tp
 void LiberalArtsStudent<T>::get_average() {
     cout << "The average of History: "
          << LiberalArtsStudent::totalHistory / totalMembers << '\t'
@@ -187,7 +188,7 @@ void LiberalArtsStudent<T>::get_average() {
          << endl;
 }
 
-template <class T>
+tp
 ostream &LiberalArtsStudent<T>::getOstream(ostream &out) const {
     Student<T>::getOstream(out);
     out << '\t' << history << '\t' << geography << '\t' << politics << '\t'
@@ -195,12 +196,12 @@ ostream &LiberalArtsStudent<T>::getOstream(ostream &out) const {
     return out;
 }
 
-template <class T>
+tp
 ostream &operator<<(ostream &out, const LiberalArtsStudent<T> &stu) {
     return stu.getOstream(out);
 }
 
-template <class T>
+tp
 istream &LiberalArtsStudent<T>::getIstream(istream &in) {
     Student<T>::getIstream(in);
     in >> history >> geography >> politics;
@@ -211,12 +212,12 @@ istream &LiberalArtsStudent<T>::getIstream(istream &in) {
     return in;
 }
 
-template <class T>
+tp
 istream &operator>>(istream &in, LiberalArtsStudent<T> &stu) {
     return stu.getIstream(in);
 }
 
-template <class T>
+tp
 void ToSort(T *stu[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i; j < n; j++) {

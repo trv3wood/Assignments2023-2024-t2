@@ -5,10 +5,49 @@
 # example: ./test_script.sh /path/to/B.cpp /path/to/test_case_b.txt /path/to/expected_ouput_b.txt  
   
 # check the number of arguments
-if [ $# -ne 3 ]; then  
-    echo "Usage: $0 <cpp_file> <test_file> <expected_output_file>"  
-    exit 1  
+if [ $# -ne 3 ] && [ $# -ne 2 ]; then  
+    echo "Usage: $0 <cpp_file> <test_file> <expected_output_file>" 
+    exit 1 
 fi  
+
+if [ $# -eq 2 ]; then
+    cpp_file="$1"
+    expected_output="$2"
+
+    # ensure that the files exist
+    if [ ! -f "$cpp_file" ]; then  
+        echo "Error: Cpp file '$cpp_file' does not exist."  
+        exit 1  
+    fi  
+
+    if [ ! -f "$expected_output" ]; then  
+        echo "Error: Expected output file '$expected_output' does not exist."  
+        exit 1  
+    fi  
+
+    # obtain the filename without the extension
+    filename=$(basename "$cpp_file" .cpp)  
+
+    # compile the cpp file
+    g++ -o "$filename" "$cpp_file"  
+
+    # Run the cpp file
+    output=$(./"$filename")  
+
+    # Compare the output with the expected output  
+    if [ "$output" == "$(cat "$expected_output")" ]; then  
+        echo "Test passed"  
+    else  
+        echo "Test failed"  
+        echo "-------------------"  
+        echo "Actual output:"  
+        echo "$output"  
+        echo -e "\n-------------------"  
+        echo "Expected output:"  
+        cat "$expected_output"  
+    fi
+    exit 0
+fi
   
 # get the arguments
 cpp_file="$1"  

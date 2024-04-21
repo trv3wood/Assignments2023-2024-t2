@@ -1,0 +1,33 @@
+// 示例代码一：计算斐波那契数列的前n项和
+
+#include <iostream>
+
+// 计算斐波那契数列的第n项
+int fibonacci(int n) {
+    if (n <= 1) { // 单行注释：基本情况
+        return n; // 返回n
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2); /* 多行注释：
+            递归计算斐波那契数列的第n项
+            使用公式F(n) = F(n-1) + F(n-2)
+        */
+    }
+}
+
+int main() {
+    int n;
+    std::cout << "请输入要计算斐波那契数列的前n项：";
+    std::cin >> n; // 输入n
+
+    int sum = 0; // 初始化和为0
+    for (int i = 0; i < n; ++i) {
+        int fib = fibonacci(i); // 计算第i项
+        sum += fib; // 更新和
+        std::cout << "第" << i + 1 << "项：" << fib << std::endl; // 输出第i项的值
+    }
+
+    std::cout << "前" << n << "项的和为：" << sum << std::endl; // 输出前n项的和
+
+    return 0; // 返回0表示成功
+}
+STOP

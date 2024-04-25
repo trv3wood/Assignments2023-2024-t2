@@ -1,0 +1,60 @@
+Input class name:
+Input title:
+Input director:
+Input time:
+Input quality:
+Input rev_time:
+Input changes:
+DirectorCut--
+Title: A Passage To India
+Director: David Lean
+Time: 197 mins
+Quality: ***
+Revised time: 180 mins
+Changes: Cave scene twice as long; more local color
+
+Input class name:
+Input title:
+Input director:
+Input time:
+Input quality:
+Film--
+Title: Mean Streets
+Director: Martin Scorsese
+Time: 168 mins
+Quality: ****
+
+Input class name:
+Input title:
+Input director:
+Input time:
+Input quality:
+Film--
+Title: The Best Years of Our Lives
+Director: William Wyler
+Time: 172 mins
+Quality: ****
+
+Input class name:
+Input title:
+Input director:
+Input time:
+Input quality:
+Input language:
+ForeignFilm--
+Title: Diva
+Director: Jean-Jacques Beineix
+Time: 123 mins
+Quality: ***
+Language: French
+
+Input class name:
+Input title:
+Input director:
+Input time:
+Input quality:
+Film--
+Title: Orlando
+Director: Sally Potter
+Time: 97 mins
+Quality: ***

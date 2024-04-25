@@ -1,0 +1,20 @@
+Film--
+Title: Rear Window
+Director: Alfred Hitchcock
+Time: 112 mins
+Quality: ****
+
+DirectorCut--
+Title: Jail Bait
+Director: Ed Wood
+Time: 70 mins
+Quality: **
+Revised time: 72 mins
+Changes: Extra footage not in original included
+
+ForeignFilm--
+Title: Jules and Jim
+Director: Francois Truffaut
+Time: 104 mins
+Quality: ****
+Language: French

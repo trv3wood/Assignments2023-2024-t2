@@ -1,0 +1,28 @@
+DirectorCut
+A Passage To India
+David Lean
+197
+3
+180
+Cave scene twice as long; more local color
+Film
+Mean Streets
+Martin Scorsese
+168
+4
+Film
+The Best Years of Our Lives
+William Wyler
+172
+4
+ForeignFilm
+Diva
+Jean-Jacques Beineix
+123
+3
+French
+Film
+Orlando
+Sally Potter
+97
+3
